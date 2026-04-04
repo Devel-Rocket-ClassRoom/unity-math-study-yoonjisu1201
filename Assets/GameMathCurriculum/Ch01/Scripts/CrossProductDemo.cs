@@ -59,10 +59,13 @@ public class CrossProductDemo : MonoBehaviour
     private string CheckLeftOrRight(Transform targetTransform)
     {
         // TODO
+        //1. 벡터 두개 필요 > 적으로 향하는 적 벡터 하나 > y좌표값 0으로 고정
+        //2. 적 벡터 > 정규화 > 외적벡터 구하기
+        //3. 외적값 > 0 일때 적이 내 오른쪽, < 0 적이 내 왼쪽
+
         Vector3 toTarget = targetTransform.position - transform.position;
         toTarget.y = 0f;
-
-        crossProduct = Vector3.Cross(transform.forward, toTarget);  //순서 내꺼 먼저
+        crossProduct = Vector3.Cross(transform.forward, toTarget);
         crossY = crossProduct.y;
         float threshold = 0.1f;
 
@@ -70,11 +73,10 @@ public class CrossProductDemo : MonoBehaviour
         {
             return "오른쪽";
         }
-        else if (crossY < -threshold)
+        else if (crossY < threshold)
         {
             return "왼쪽";
         }
-
 
         return "정면/후면";
     }

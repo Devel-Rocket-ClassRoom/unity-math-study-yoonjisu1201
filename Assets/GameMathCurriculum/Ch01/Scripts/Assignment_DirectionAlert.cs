@@ -34,7 +34,7 @@ public class Assignment_DirectionAlert : MonoBehaviour
     [SerializeField] private float alertRange = 15f;
 
     [Header("===전 후방 설정  ===")]
-    [Tooltip("전 감지 반경")]
+    [Tooltip("전 후방 감지 반경")]
     [Range(0.05f, 5f)]
     [SerializeField] private float sideThreshold = 0.3f;
 
@@ -81,21 +81,20 @@ public class Assignment_DirectionAlert : MonoBehaviour
     private Direction GetDirection(Transform enemy)
     {
         // TODO
-        Vector3 toTarget =  enemy.position - transform.position;
-        toTarget.y = 0f;
-
-        if (toTarget == Vector3.zero || toTarget.magnitude > alertRange)
+        Vector3 toEnemy = enemy.position - transform.position;
+        toEnemy.y = 0;
+        if (toEnemy.magnitude > alertRange)
         {
-            return Direction.None; 
+            return Direction.None;
         }
-        Vector3 cross = Vector3.Cross(transform.forward, toTarget.normalized);
-        float dot = Vector3.Dot(transform.forward, toTarget.normalized);
+        float dot = Vector3.Dot(transform.forward, toEnemy.normalized);
+        Vector3 cross = Vector3.Cross(transform.forward, toEnemy.normalized);
 
         if (Mathf.Abs(cross.y) > sideThreshold)
         {
-            return  cross.y > 0 ? Direction.Right : Direction.Left;
+            return cross.y > 0 ? Direction.Right : Direction.Left;
         }
-        return dot > 0? Direction.Front : Direction.Back;
+        return dot > 0 ? Direction.Front : Direction.Back;
     }
 
     private void OnDrawGizmos()

@@ -69,14 +69,13 @@ public class Assignment_EnemyDetector : MonoBehaviour
     {
         // TODO
         Vector3 toEnemy = enemy.position - transform.position;
-        if (toEnemy.magnitude < detectionRange)
+        if (toEnemy.magnitude > detectionRange)
         {
             return false;
         }
-
         float dot = Vector3.Dot(transform.forward, toEnemy.normalized);
-        float threshold = Mathf.Cos(detectionFOV * 0.5f * Mathf.Deg2Rad);
-        return dot >= threshold;
+        float haffow = Mathf.Cos(detectionFOV * 0.5f * Mathf.Deg2Rad);
+        return dot > haffow;
     }
 
     private void OnDrawGizmos()

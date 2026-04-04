@@ -711,13 +711,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383190119}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff2172da1632a4f499f18b79f2070338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assignment_EnemyDetector
-  detectionFOV: 120
-  detectionRange: 10
+  detectionFOV: 93
+  detectionRange: 6.82
   uiInfoText: {fileID: 0}
   detectedCount: 0
 --- !u!114 &1383190129
@@ -732,9 +732,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ab1b04a9e56bb4298949a315a120d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assignment_DirectionAlert
-  alertRange: 15
-  sideThreshold: 0.3
-  uiInfoText: {fileID: 0}
+  alertRange: 5.22
+  sideThreshold: 0.11
+  uiInfoText: {fileID: 1738976620}
   nearbyEnemies: []
 --- !u!1001 &1436931446
 PrefabInstance:
@@ -822,13 +822,17 @@ PrefabInstance:
       propertyPath: uiInfoText
       value: 
       objectReference: {fileID: 1738976620}
+    - target: {fileID: 1840143054429773828, guid: 3bed9fa5c1a730c40888ceccbe3829ef, type: 3}
+      propertyPath: viewDistance
+      value: 11.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4389359893531360214, guid: 3bed9fa5c1a730c40888ceccbe3829ef, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1436931447}
     - target: {fileID: 4389359893531360214, guid: 3bed9fa5c1a730c40888ceccbe3829ef, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4389359893531360214, guid: 3bed9fa5c1a730c40888ceccbe3829ef, type: 3}
       propertyPath: uiInfoText
@@ -840,7 +844,7 @@ PrefabInstance:
       objectReference: {fileID: 1879432548}
     - target: {fileID: 6849056315425025016, guid: 3bed9fa5c1a730c40888ceccbe3829ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.48
+      value: 3.17
       objectReference: {fileID: 0}
     - target: {fileID: 6849056315425025016, guid: 3bed9fa5c1a730c40888ceccbe3829ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -848,7 +852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6849056315425025016, guid: 3bed9fa5c1a730c40888ceccbe3829ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.27
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: 6849056315425025016, guid: 3bed9fa5c1a730c40888ceccbe3829ef, type: 3}
       propertyPath: m_LocalRotation.w

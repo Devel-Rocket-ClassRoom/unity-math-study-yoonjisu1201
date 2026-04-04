@@ -66,17 +66,24 @@ public class DotProductDemo : MonoBehaviour
 
     private bool CheckInSight(Transform targetTransform)
     {
+        //나.  타켓 >
+        //1.타켓으로의 벡터구하기
+        //2.if 타켓벡터의 크기가 범위를 벗어나면 flase
+        //3.타켓벡터 > 단위벡터 / 두 벡터의 내적 구하기
+        //4.시야각/2 > 코사인값 구하기(레디안 변경)
+        //5.구한 내적 크기가 시야각의 코사인 값보다 크면 true > 범위안에 적이 있다.
+
         Vector3 toTarget = targetTransform.position - transform.position;
         if (toTarget.magnitude > viewDistance)
+        {
             return false;
+        }
 
-        Vector3 toTargetNorm = toTarget.normalized;
+        dotProductValue = Vector3.Dot(transform.forward, toTarget.normalized);
+        angleBetween = Mathf.Acos(dotProductValue) * Mathf.Rad2Deg;  //degree 변환을 해 줘야 45, 90같은 각도로 나옴
+        float haffowCos = Mathf.Cos(fieldOfView * 0.5f * Mathf.Deg2Rad);
 
-        dotProductValue = Vector3.Dot(transform.forward, toTargetNorm);
-        angleBetween = Mathf.Acos(dotProductValue) * Mathf.Rad2Deg;
-        float halffowCos = Mathf.Cos(fieldOfView * 0.5f * Mathf.Deg2Rad);
-
-        return dotProductValue > halffowCos;
+        return dotProductValue > haffowCos;
     }
 
     private void OnDrawGizmos()
