@@ -4,8 +4,9 @@
 // Sin 파동으로 오브젝트 진동 운동
 // =============================================================================
 
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using static SinWaveMotion;
 
 public class SinWaveMotion : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class SinWaveMotion : MonoBehaviour
         // TODO
         float phaseRadians = phase * Mathf.Deg2Rad;
         float timeInCycle = Time.time * frequency;
-        currentOffset = amplitude  * Mathf.Sin(2f * Mathf.PI * timeInCycle + phaseRadians);
+        currentOffset = amplitude * Mathf.Sin(2f * Mathf.PI * timeInCycle + phaseRadians);
         Vector3 newPosition = startPosition;
         switch (motionAxis)
         {
@@ -48,13 +49,14 @@ public class SinWaveMotion : MonoBehaviour
                 break;
             case MotionAxis.Y:
                 newPosition.y += currentOffset;
-
                 break;
             case MotionAxis.Z:
                 newPosition.z += currentOffset;
                 break;
         }
         transform.localPosition = newPosition;
+
+
         UpdateUI();
     }
 

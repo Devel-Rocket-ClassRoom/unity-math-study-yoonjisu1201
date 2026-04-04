@@ -58,10 +58,10 @@ public class TurretAim : MonoBehaviour
     private void RotateTowardTarget()
     {
         // TODO
-        Quaternion targetQuaternion = Quaternion.Euler(0f, 90 - targetAngleDegrees, 0f);
+        Quaternion targetQuatertion = Quaternion.Euler(0f, 90 - targetAngleDegrees, 0f);
 
         transform.rotation = Quaternion.RotateTowards(
-            transform.rotation, targetQuaternion, rotationSpeed * Time.deltaTime);
+            transform.rotation, targetQuatertion, rotationSpeed * Time.deltaTime);
     }
 
     private void UpdateUI()
