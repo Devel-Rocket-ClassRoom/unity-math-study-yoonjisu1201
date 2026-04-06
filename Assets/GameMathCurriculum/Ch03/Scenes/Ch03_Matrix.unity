@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 882759546005887644, guid: 6d65458aa99e40e48bdd79ddc144813f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5355454076868712925, guid: 6d65458aa99e40e48bdd79ddc144813f, type: 3}
       propertyPath: uiText
       value: 
@@ -651,13 +655,17 @@ PrefabInstance:
       propertyPath: uiText
       value: 
       objectReference: {fileID: 697674738}
+    - target: {fileID: 6970000621733122294, guid: c03da01c00aaf2645b81c5ed62942e04, type: 3}
+      propertyPath: rotationAngle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8965710035645752671, guid: c03da01c00aaf2645b81c5ed62942e04, type: 3}
       propertyPath: m_Name
       value: TrailDemo
       objectReference: {fileID: 0}
     - target: {fileID: 8965710035645752671, guid: c03da01c00aaf2645b81c5ed62942e04, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1119,6 +1127,10 @@ PrefabInstance:
       propertyPath: childObject
       value: 
       objectReference: {fileID: 1908970179}
+    - target: {fileID: 3492875378990494554, guid: bb05861f1a5d1cc439c0696795057ea1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5979612607938379491, guid: bb05861f1a5d1cc439c0696795057ea1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
