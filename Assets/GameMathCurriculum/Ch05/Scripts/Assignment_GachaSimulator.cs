@@ -61,6 +61,8 @@ public class Assignment_GachaSimulator : MonoBehaviour
         {
             PerformHardPityPulls();
         }
+
+        UpdateUI();
     }
 
     private void PerformSinglePull()
@@ -87,15 +89,39 @@ public class Assignment_GachaSimulator : MonoBehaviour
     private void ExecutePull()
     {
         // TODO
-        // if(softPityStart 전까지)는 현재확률
-        // else if(hardPity -1 전까지) -> 
-        // else -> ~~~ = 1f
+        if (currentPityCount < softPityStart)
+        {
+            currentEffectiveRate = baseRate;
+        }
+        else if (currentPityCount < hardPity - 1)
+        {
+            float bonus = (currentPityCount - (softPityStart - 1)) * 0.06f;
+            currentEffectiveRate = Mathf.Clamp(baseRate + bonus, 0f, 1f);
+        }
+        else
+        {
+            currentEffectiveRate = 1f;
+        }
 
-        //뽑는 행동
-        //bool isSSR = 랜덤 <  ~~
-        // if(isSSR) / else
-        //totalPulls++
-        //pullHistiiry.insert(0, isSSR)
+        bool isSSR = Random.value < currentEffectiveRate;
+        totalPulls++;
+        pullHistory.Insert(0, isSSR);
+        if (pullHistory.Count > MAX_HISTORY)
+        {
+            pullHistory.RemoveAt(MAX_HISTORY);
+        }
+   
+        if (isSSR)
+        {
+            totalSSRs++;
+            ssrPityList.Add(currentPityCount + 1);
+            currentPityCount = 0;   
+        }
+        else
+        {
+            currentPityCount++;
+        }
+        
     }
 
     private void UpdateUI()
