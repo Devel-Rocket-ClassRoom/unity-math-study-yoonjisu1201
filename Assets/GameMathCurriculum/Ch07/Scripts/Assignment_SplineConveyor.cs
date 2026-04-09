@@ -6,7 +6,9 @@
 // =============================================================================
 
 using UnityEngine;
-using TMPro;
+using TMPro; 
+using System.Linq;
+
 
 public class Assignment_SplineConveyor : MonoBehaviour
 {
@@ -32,9 +34,23 @@ public class Assignment_SplineConveyor : MonoBehaviour
     [SerializeField] private float globalT;
     [SerializeField] private float currentSpeedMultiplier;
 
+
     private void Update()
     {
         // TODO
+        currentSpeedMultiplier = speedCurve.Evaluate(globalT);
+        globalT += Time.deltaTime / cycleDuration * currentSpeedMultiplier;
+        globalT = Mathf.Repeat(globalT, 1f);
+
+        for (int i = 0; i < boxes.Length; i++)
+        {
+            float offset = (float)i / boxes.Length;
+
+            float boxT = Mathf.Repeat(globalT + offset, 1f);
+
+            boxes[i].position = EvaluateSpline(waypoints, boxT);
+
+        }
 
         UpdateUI();
     }

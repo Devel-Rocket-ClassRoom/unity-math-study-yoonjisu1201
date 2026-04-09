@@ -112,8 +112,6 @@ public class EasingDemo : MonoBehaviour
             currentEasedValue = Ease(easingType, currentT);
         }
 
-        // 0 -> 1 -> 0 
-        // 포물선 운동 (직선 아님)
         float jumpCurve = currentEasedValue * (1f - currentEasedValue) * 4f;
 
         Vector3 newPos = startPos;
