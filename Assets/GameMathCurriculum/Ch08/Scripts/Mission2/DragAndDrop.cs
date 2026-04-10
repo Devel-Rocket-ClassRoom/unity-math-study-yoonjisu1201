@@ -33,21 +33,23 @@ public class DragAndDrop : MonoBehaviour
             {
                 Debug.Log("타겟 레이어가 맞습니다.");
                 target = targetHit.collider.gameObject;
-                originalPos = targetHit.point + targetYOffset;
+                originalPos = transform.position;
             }
         }
 
         if (Input.GetMouseButton(0))
         {
             if (target == null) return;
-            Debug.Log("누르고 있는 중. .");
+            //Debug.Log("누르고 있는 중. .");
             Ray terrainRay = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit terrainHit;
 
             if (Physics.Raycast(terrainRay, out terrainHit, Mathf.Infinity, terrainLayer))
             {
+
                 target.transform.position = terrainHit.point + targetYOffset;
                 target.transform.rotation = Quaternion.LookRotation(terrainHit.normal);
+
             }
         }
 
@@ -55,13 +57,14 @@ public class DragAndDrop : MonoBehaviour
         {
             StartCoroutine(ReturnToOrigin(target, originalPos));
         }
-        Debug.Log("한 프레임 종료");
+        //Debug.Log("한 프레임 종료");
     }
 
     IEnumerator ReturnToOrigin(GameObject targetObj, Vector3 org)
     {
         float elapsed = 0f;
         float duration = 1f;
+        Debug.Log($"{org}");
         Vector3 startPos = targetObj.transform.position;
 
         while (elapsed < duration)
@@ -81,6 +84,6 @@ public class DragAndDrop : MonoBehaviour
 
         targetObj.transform.position = org;
         targetObj = null;
-        originalPos = Vector3.zero;
+        //originalPos = Vector3.zero;
     }
 }

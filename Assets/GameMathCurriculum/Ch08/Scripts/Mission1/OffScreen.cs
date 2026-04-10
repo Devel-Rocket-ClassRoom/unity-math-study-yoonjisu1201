@@ -30,7 +30,10 @@ public class OffScreen : MonoBehaviour
 
         if (isBehind)
         {
-            screenPos *= -1;
+            //screenPos *= -1;
+            float flippedX = Screen.width - screenPos.x;
+            float flippedY = Screen.height - screenPos.y;
+            screenPos = new Vector3(flippedX, flippedY, 0f);
         }
 
         bool isOffScreen = isBehind || screenPos.x < 0 || screenPos.x > Screen.width ||
@@ -47,5 +50,7 @@ public class OffScreen : MonoBehaviour
         {
             indicator.gameObject.SetActive(false);
         }
+
+        
     }
 }
